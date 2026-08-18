@@ -429,6 +429,12 @@
     .contact-note {
       font-size: .78rem; color: var(--ink-soft); margin-top: 1rem; text-align: center; line-height: 1.9;
     }
+    .form-thanks {
+      margin-top: 1.2rem; padding: 1rem 1.2rem;
+      background: var(--lav-pale); border: 1px solid rgba(164,139,201,.35); border-radius: 4px;
+      font-size: .85rem; color: var(--lav-deep); text-align: center; line-height: 1.9;
+    }
+    .form-thanks[hidden] { display: none; }
     .mail-link { color: var(--lav-deep); border-bottom: 1px solid var(--lav-pale); transition: border-color .3s; }
     .mail-link:hover { border-color: var(--lav-deep); }
 
@@ -630,6 +636,7 @@
         <div class="contact-card">
           <form action="https://formsubmit.co/rintokenlab@zohomail.jp" method="POST">
             <input type="hidden" name="_subject" value="【公式サイト】お問い合わせ">
+            <input type="hidden" name="_next" value="https://rincanvas-hash.github.io/ayaha-site/?sent=1#contact">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
             <input type="text" name="_honey" style="display:none">
@@ -647,6 +654,7 @@
             </div>
             <button class="btn-submit" type="submit">Send</button>
           </form>
+          <p class="form-thanks" id="form-thanks" hidden>送信しました。ありがとうございます。<br>内容を確認のうえ、折り返しご連絡いたします。</p>
           <p class="contact-note">コラボレーション・作品のご相談など、お気軽にご連絡ください。<br>
             メールでも受け付けています：<a class="mail-link" href="mailto:rintokenlab@zohomail.jp">rintokenlab@zohomail.jp</a></p>
         </div>
@@ -708,6 +716,14 @@ document.querySelectorAll('.sub-link').forEach(el => {
   el.addEventListener('click', go);
   el.addEventListener('keydown', e => { if (e.key === 'Enter') go(e); });
 });
+
+/* 送信後（?sent=1 で戻ってきたとき）にお礼を表示 */
+if (new URLSearchParams(location.search).get('sent') === '1') {
+  const t = document.getElementById('form-thanks');
+  if (t) { t.hidden = false; }
+  document.getElementById('contact')?.scrollIntoView({ block: 'start' });
+  history.replaceState(null, '', location.pathname + '#contact');
+}
 
 /* ナビの下線 */
 (function(){
