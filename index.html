@@ -200,6 +200,26 @@
       transform: translateY(-2px);
     }
     .btn::after { content: '↓'; font-size: .8rem; }
+    /* ───────── Hero: 2つのアプリへの入口 ───────── */
+    .hero-apps {
+      display: flex; gap: .7rem; justify-content: center; flex-wrap: wrap;
+      margin-top: 1.6rem;
+    }
+    .hero-app {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .55rem 1.1rem .55rem .8rem;
+      border: 1px solid var(--gold); border-radius: 40px;
+      background: rgba(255,255,255,.55); color: var(--ink);
+      font-size: .82rem; letter-spacing: .06em; text-decoration: none;
+      transition: all .3s;
+    }
+    .hero-app .ic { font-size: 1.1rem; }
+    .hero-app small { color: var(--ink-soft); font-size: .72rem; margin-left: .15rem; }
+    .hero-app:hover {
+      background: var(--gold); color: #fff; border-color: var(--gold);
+      box-shadow: 0 8px 24px rgba(200,169,106,.3); transform: translateY(-2px);
+    }
+    .hero-app:hover small { color: rgba(255,255,255,.85); }
     .scroll-hint {
       position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
       width: 1px; height: 50px;
@@ -472,6 +492,8 @@
       .works-grid { grid-template-columns: 1fr; }
       .hero-eyebrow::before, .hero-eyebrow::after { width: 16px; margin: 0 .5rem; }
       .contact-card { padding: 1.6rem; }
+      .hero-apps { margin-top: 1.2rem; gap: .5rem; }
+      .hero-app { font-size: .78rem; padding: .5rem .9rem .5rem .7rem; }
     }
   </style>
 </head>
@@ -498,6 +520,10 @@
     <p class="hero-name-en">Ayaha Rin</p>
     <p class="hero-lead">やさしい色と物語で、日常に小さな驚きと安らぎを。</p>
     <a class="btn" href="#works">View Works</a>
+    <div class="hero-apps">
+      <a class="hero-app" href="https://rincanvas-hash.github.io/okane-kuse/" target="_blank" rel="noopener"><span class="ic">🦊</span>お金のクセ診断<small>10問・約2分</small></a>
+      <a class="hero-app" href="https://rincanvas-hash.github.io/mofu-mikuji/" target="_blank" rel="noopener"><span class="ic">🥠</span>モフみくじ<small>1日1回</small></a>
+    </div>
   </div>
   <div class="scroll-hint"></div>
 </section>
